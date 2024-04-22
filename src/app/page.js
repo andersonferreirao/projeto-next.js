@@ -1,113 +1,281 @@
-import Image from 'next/image'
-
+'use client';
+import './globals.css';
+import { Button, Dropdown } from 'flowbite-react';
+import { DropdownHeader } from 'flowbite-react';
+import { DropdownItem } from 'flowbite-react';
+import ParticlesComponent from '@/components/particles';
+import { Navbar } from 'flowbite-react';
+import { useEffect, useState } from 'react';
 export default function Home() {
+  
+  
+    const [dados,setDados] = useState(null);
+
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await fetch("https://brapi.dev/api/quote/PETR4?token=8S8WAihzotDKjGVtPVRC9L");
+          const consulta = await response.json();
+          setDados(consulta);
+        
+        } catch(error){
+          console.error("Erro ao consumir a API");
+        }
+      }
+      fetchData();
+  }, []);
+
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
+    <>
+    <div className='app'>
+      <ParticlesComponent id="particles"/>
+   
+  <header>
+
+  <nav class="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2 ">
+      <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <img src="../images/dolar-color.png" alt="" className="size-16"/>
+          <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-green-400">CRYPP</span>
+    </a>
+    
+  <Dropdown type="button" className="md:hidden bg-gray-500" aria-controls="navbar-solid-bg" aria-expanded="false">
+    
+    
+  
+  <DropdownHeader className='md:hidden '>
+    
+    <DropdownItem className='justify-center '>
+      <a href="#" class="text-xl block  px-3 md:p-0 text-green-400  md:bg-transparent  md:dark:text-green-500  md:dark:bg-transparent mt-3" aria-current="page">
+        Home
+      </a>
+    </DropdownItem>
+    
+    <DropdownItem className='justify-center'>
+      <a href="#" class="text-xl block  px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent mb-1">
+        Sobre nós
+      </a>
+      
+    </DropdownItem>
+    
+    <DropdownItem className='justify-center'>
+      <a href="#" class="text-xl block  px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent mb-1">
+        Entrar
+      </a>
+    </DropdownItem>
+
+    <DropdownItem className='justify-center'>
+    
+      <a href="#" class="bg-green-400 text-xl block px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-black md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent mb-1">
+        Cadastro
+      </a>
+    
+    </DropdownItem>
+
+  </DropdownHeader>
+</Dropdown>
+
+    
+    <div class="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
+      <ul class="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700">
+        <li>
+          <a href="#" class="font-semibold block py-2 px-3 md:p-0 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:dark:text-green-500 dark:bg-blue-600 md:dark:bg-transparent mt-2" aria-current="page">
+            Home
           </a>
+        </li>
+        <li>
+          <a href="#" 
+          class="font-semibold block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent mt-2">
+            Sobre nós
+          </a>
+        </li>
+        <li>
+          <a href="#" class="font-semibold block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent mt-2">
+            Entrar
+          </a>
+       </li>
+        <li>
+        <button class="bg-green-900 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full">
+          <a href="#" class="font-semibold block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
+            Cadastro
+          </a>
+        </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+  
+
+      <div className="flex items-center justify-center">
+          <img hidden src="../images/fallout-logo.png" alt="" className=''/>
+      </div>
+
+
+
+         
+    </header>
+
+    <main className="my-8">
+    <center>
+            <div className="md:flex mt-8 md:-mx-4 container mx-auto px-6">
+                <div className="w-full h-64 md:mx-4 rounded-md overflow-hidden bg-cover bg-center md:w-1/2" >
+                    <div className="bg-gray-900 bg-opacity-50 flex items-center h-full">
+                        <div className="px-10 max-w-xl">
+                            <h2 className="text-2xl text-white font-semibold">Back Pack</h2>
+                            <p className="mt-2 text-gray-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore facere provident molestias ipsam sint voluptatum pariatur.</p>
+                            <button className="flex items-center mt-4 text-white text-sm uppercase font-medium rounded hover:underline focus:outline-none">
+                                <span>Shop Now</span>
+                                <svg className="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div className="w-full h-64 mt-8 md:mx-4 rounded-md overflow-hidden bg-cover bg-center md:mt-0 md:w-1/2" >
+                    <div className="bg-gray-900 bg-opacity-50 flex items-center h-full">
+                      
+                        <div className="px-10 max-w-xl ml-32 mb-32">
+
+                        <h1 className='text-lg text-white'>DOLAR</h1>
+                                     
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </center>
+            <div className="mt-16">
+        <div className="container mx-auto px-6 w-2/5">
+            <div className="h-64 rounded-md overflow-hidden bg-cover bg-center">
+                <div className="bg-gray-900 bg-opacity-50 flex items-center h-full">
+                    <div className="px-10 max-w-xl">
+                        <h2 className="text-2xl text-white font-semibold">Sport Shoes</h2>
+                        <p className="mt-2 text-gray-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore facere provident molestias ipsam sint voluptatum pariatur.</p>
+                        <button className="flex items-center mt-4 px-3 py-2 bg-blue-600 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                            <span>Shop Now</span>
+                            <svg className="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+                <h3 className="text-gray-600 text-2xl font-medium">Fashions</h3>
+                <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
+                    <div className="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                        <div className="flex items-end justify-end h-56 w-full bg-cover" >
+                            <button className="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                                <svg className="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                            </button>
+                        </div>
+                        <div className="px-5 py-3">
+                            <h3 className="text-gray-700 uppercase">Chanel</h3>
+                            <span className="text-gray-500 mt-2">$12</span>
+                        </div>
+                    </div>
+                    <div className="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                        <div className="flex items-end justify-end h-56 w-full bg-cover" >
+                            <button className="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                                <svg className="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                            </button>
+                        </div>
+                        <div className="px-5 py-3">
+                            <h3 className="text-gray-700 uppercase">Man Mix</h3>
+                            <span className="text-gray-500 mt-2">$12</span>
+                        </div>
+                    </div>
+                    <div className="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                        <div className="flex items-end justify-end h-56 w-full bg-cover" >
+                            <button className="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                                <svg className="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                            </button>
+                        </div>
+                        <div className="px-5 py-3">
+                            <h3 className="text-gray-700 uppercase">classNameic watch</h3>
+                            <span className="text-gray-500 mt-2">$12</span>
+                        </div>
+                    </div>
+                    <div className="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                        <div className="flex items-end justify-end h-56 w-full bg-cover" >
+                            <button className="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                                <svg className="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                            </button>
+                        </div>
+                        <div className="px-5 py-3">
+                            <h3 className="text-gray-700 uppercase">woman mix</h3>
+                            <span className="text-gray-500 mt-2">$12</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="mt-16">
+                <h3 className="text-gray-600 text-2xl font-medium">Fashions</h3>
+                <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
+                    <div className="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                        <div className="flex items-end justify-end h-56 w-full bg-cover" >
+                            <button className="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                                <svg className="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                            </button>
+                        </div>
+                        <div className="px-5 py-3">
+                            <h3 className="text-gray-700 uppercase">Chanel</h3>
+                            <span className="text-gray-500 mt-2">$12</span>
+                        </div>
+                    </div>
+                    <div className="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                        <div className="flex items-end justify-end h-56 w-full bg-cover" >
+                            <button className="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                                <svg className="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                            </button>
+                        </div>
+                        <div className="px-5 py-3">
+                            <h3 className="text-gray-700 uppercase">Man Mix</h3>
+                            <span className="text-gray-500 mt-2">$12</span>
+                        </div>
+                    </div>
+                    <div className="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                        <div className="flex items-end justify-end h-56 w-full bg-cover">
+                            <button className="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                                <svg className="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                            </button>
+                        </div>
+                        <div className="px-5 py-3">
+                            <h3 className="text-gray-700 uppercase">classNameic watch</h3>
+                            <span className="text-gray-500 mt-2">$12</span>
+                        </div>
+                    </div>
+                    <div className="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                        <div className="flex items-end justify-end h-56 w-full bg-cover">
+                            <button className="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                                <svg className="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                            </button>
+                        </div>
+                        <div className="px-5 py-3">
+                            <h3 className="text-gray-700 uppercase">woman mix</h3>
+                            <span className="text-gray-500 mt-2">$12</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
     </main>
+        
+    
+    
+    
+
+
+
+
+    <footer>
+    <Navbar style={{ backgroundColor: 'transparent'}} className='fixed bottom-0 w-full h-12'>
+  <Button className='absolute right-1 bottom-2  rounded-full border-none '>
+    <span className='text-white mt-5 mr-2'>CHAT</span>
+    <img src="../images/fallout.png" alt="" className='size-16 rounded-full' />
+  </Button>
+</Navbar>
+    </footer>
+    </div>
+    </>
   )
 }
