@@ -1,52 +1,53 @@
+'use client';
 import React from 'react';
-
+import LoginLayout from './layout';
+import '../globals.css';
+import Link from 'next/link';
 export default function Login(){
 
 
 return(
-    <div className="flex items-center min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
+    <div id='app' >
+
+    
+    <div className="flex items-center min-h-screen p-6  ">
     <div className="flex-1 h-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800">
       <div className="flex flex-col overflow-y-auto md:flex-row">
         <div className="h-32 md:h-auto md:w-1/2">
-          <img
-            aria-hidden="true"
-            className="object-cover w-full h-full dark:hidden"
-            src="/static/media/login-office.72742c2e.jpeg"
-            alt="Office"
-          />
+          
           <img
             aria-hidden="true"
             className="hidden object-cover w-full h-full dark:block"
-            src="/static/media/login-office-dark.cb4a995f.jpeg"
-            alt="Office"
+            src="../images/login.gif"
+            alt="Gif de dinheiro"
           />
         </div>
         <main className="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
           <div className="w-full">
-            <h1 className="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200">
+            <h1 className="mb-4 text-3xl font-semibold text-gray-700 dark:text-slate-200 text-center">
               Login
             </h1>
-            <label className="block text-sm text-gray-700 dark:text-gray-400">
+            <label className="block text-x1 text-slate-300 dark:text-slate-300">
               <span>Email</span>
               <input
-                className="block w-full text-sm focus:outline-none dark:text-gray-300 form-input leading-5 focus:border-purple-400 dark:border-gray-600 focus:shadow-outline-purple dark:focus:border-gray-600 dark:focus:shadow-outline-gray dark:bg-gray-700 mt-1"
+                className="text-center size-10 block w-full text-xl focus:outline-none dark:text-slate-300 form-input leading-5 focus:border-green-400 dark:border-gray-600 focus:shadow-outline-green dark:focus:border-gray-600 dark:focus:shadow-outline-gray dark:bg-gray-700 mt-1"
                 type="email"
-                placeholder="john@doe.com"
+                placeholder="Email@example.com"
               />
             </label>
-            <label className="block text-sm text-gray-700 dark:text-gray-400 mt-4">
+            <label className="block text-x1 text-slate-300 dark:text-slate-300 mt-3">
               <span>Password</span>
               <input
-                className="block w-full text-sm focus:outline-none dark:text-gray-300 form-input leading-5 focus:border-purple-400 dark:border-gray-600 focus:shadow-outline-purple dark:focus:border-gray-600 dark:focus:shadow-outline-gray dark:bg-gray-700 mt-1"
+                className="text-center size-10 block w-full text-x1 focus:outline-none dark:text-slate-300 form-input leading-5 focus:border-green-400 dark:border-gray-600 focus:shadow-outline-green dark:focus:border-gray-600 dark:focus:shadow-outline-gray dark:bg-gray-700 mt-1"
                 type="password"
                 placeholder="***************"
               />
             </label>
             <a
-              className="align-bottom inline-flex items-center justify-center cursor-pointer leading-5 transition-colors duration-150 font-medium focus:outline-none px-4 py-2 rounded-lg text-sm text-white bg-purple-600 border border-transparent active:bg-purple-600 hover:bg-purple-700 focus:shadow-outline-purple w-full mt-4"
+              className="align-bottom inline-flex items-center justify-center cursor-pointer leading-5 transition-colors duration-150 font-medium focus:outline-none px-4 py-2 rounded-lg text-x1 text-white bg-green-600 border border-transparent active:bg-green-600 hover:bg-green-700 focus:shadow-outline-green w-full mt-4"
               href="/app"
             >
-              Log in
+              Entrar
             </a>
             <hr className="my-8" />
             <button
@@ -83,25 +84,25 @@ return(
             </button>
             <p className="mt-4">
               <a
-                className="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
+                className="text-sm font-medium text-green-600 dark:text-green-400 hover:underline"
                 href="/forgot-password"
               >
-                Forgot your password?
+                Esqueceu sua senha?
               </a>
             </p>
             <p className="mt-1">
-              <a
-                className="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
-                href="/create-account"
+              <Link
+                className="text-sm font-medium text-green-600 dark:text-green-400 hover:underline"
+                href={"./login/registration"}
               >
-                Create account
-              </a>
+                Criar conta
+              </Link>
             </p>
           </div>
         </main>
       </div>
     </div>
   </div>    
-
+  </div>
 )
 }
