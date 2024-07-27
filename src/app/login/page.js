@@ -1,13 +1,51 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import LoginLayout from './layout';
 import '../globals.css';
 import Link from 'next/link';
 export default function Login(){
 
 
+const [user, setUser] = useState({
+
+"name":"",
+"password":""
+}
+)
+
+
+const handleChange = (event)=> {
+  setUser(
+    user => ({...user, [event.target.name]:
+       event.target.value})
+  );
+  console.log(user);
+}
+
+
+const handleSubmit = (event) => { 
+  event.preventDefault();
+
+  axios.post("http://localhost:4000//authentication/login", data).
+  then(
+  response => {
+  console.log(response.data);
+  
+  window.location.href = './login';
+
+  }  
+  ).
+  catch(error => console.log(error.response.data)).
+  finally(console.log("Finally"));
+
+}
+
+
+
+
+
 return(
-    <div id='app' >
+    <div id='app'>
 
     
     <div className="flex items-center min-h-screen p-6  ">
